@@ -1,0 +1,20 @@
+{
+  "name": "hamsoft/condor-test-app",
+  "description": "Testing app",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Dusan Vlahovic",
+      "email": "dusanvl14@gmail.com"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "Framework"
+    ],
+    "psr-4": {
+      "Framework\\": "/Framework"
+    }
+  }
+}
