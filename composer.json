@@ -14,13 +14,19 @@
       "Framework"
     ],
     "psr-4": {
-      "Framework\\": "/Framework"
+      "Framework\\": "Framework/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
     }
   },
   "require": {
-    "php": "8.0"
+    "php": "^8.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9"
+    "phpunit/php-code-coverage": "^9.2",
+    "phpunit/phpunit": "^9.5"
   }
 }
