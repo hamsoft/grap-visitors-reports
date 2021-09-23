@@ -15,10 +15,8 @@ class Config
     public function get($key, $default = null)
     {
         $parts = explode('.', $key);
-        
-        $configPath = 'config/' . array_shift($parts) . '.php';
 
-        $configs = $this->file->readFile($configPath);
+        $configs = $this->file->readFile(__DIR__ . '/../config/' . array_shift($parts) . '.php');
                 
         while(isset($configs) && !empty($parts)) {
             $configs = $configs[array_shift($parts)] ?? null;
