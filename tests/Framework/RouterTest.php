@@ -15,13 +15,15 @@ class RouterTest extends TestCase
 
     public function setUp(): void
     {
-        $this->router = new Router();
-
-        $this->router->addRoute('GET', '/', $this->makeAction('Home'));
+        parent::setUp();
+        
+        $this->router = $this->app->make(Router::class);
     }
 
     public function testShowHomePage(): void
     {
+        $this->router->addRoute('GET', '/', $this->makeAction('Home'));
+        
         $response = $this->router->handleRequest($this->createRequest('GET', '/'));
 
         $this->assertEquals('Home', $response);
@@ -66,7 +68,7 @@ class RouterTest extends TestCase
         $_SERVER['REQUEST_METHOD'] = $method;
         $_SERVER['REQUEST_URI'] = $uri;
 
-        return Request::create();
+        return $this->app->make(Request::class);
     }
 
     /**

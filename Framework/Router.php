@@ -8,6 +8,12 @@ class Router
 {
 
     private array $routes = [];
+    private Container $container;
+
+    public function __construct(Container $container)
+    {
+        $this->container = $container;
+    }
 
     public function addRoute(string $method, string $url, array|callable $action): void
     {
@@ -28,7 +34,7 @@ class Router
         $action = $route['action'];
 
         if (is_array($action)) {
-            $controller = new $action[0];
+            $controller = $this->container->make($action[0]);
             
             if (isset($action[1])) {
                 $controllerAction = $action[1];
