@@ -12,7 +12,7 @@ class RequestTest extends TestCase
     {
         $_SERVER['REQUEST_METHOD'] = 'POST';
         
-        $request = Request::create();
+        $request = $this->app->make(Request::class);
         
         $this->assertEquals('POST', $request->getMethod());
     }
