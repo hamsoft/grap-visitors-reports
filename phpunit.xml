@@ -10,8 +10,11 @@
         failOnWarning="true"
         verbose="true">
     <testsuites>
-        <testsuite name="default">
-            <directory>tests</directory>
+        <testsuite name="Framework">
+            <directory>tests/Framework</directory>
+        </testsuite>
+        <testsuite name="Statistics">
+            <directory>tests/Statistics</directory>
         </testsuite>
     </testsuites>
 

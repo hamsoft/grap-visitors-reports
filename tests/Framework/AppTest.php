@@ -4,7 +4,6 @@ namespace Tests\Framework;
 
 
 use Framework\App;
-use Framework\Container;
 use Framework\Errors\NotFound;
 use Framework\Router;
 use Tests\TestCase;

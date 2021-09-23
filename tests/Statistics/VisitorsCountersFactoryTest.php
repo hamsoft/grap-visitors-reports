@@ -1,10 +1,11 @@
 <?php
 
-namespace Tests;
+namespace Tests\Statistics;
 
 use Statistics\VisitorCounterException;
 use Statistics\VisitorsCounters\FakeCounter;
 use Statistics\VisitorsCountersFactory;
+use Tests\TestCase;
 
 class VisitorsCountersFactoryTest extends TestCase
 {

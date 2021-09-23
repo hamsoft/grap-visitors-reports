@@ -1,27 +1,27 @@
 <?php
 
-namespace Tests;
+namespace Tests\Statistics;
 
 use Framework\Config;
+use JsonException;
 use Statistics\StatisticsController;
 use Statistics\VisitorsCounters\FakeCounter;
+use Tests\TestCase;
 
 class StatisticsControllerTest extends TestCase
 {
 
-    private StatisticsController $statisticsController;
-
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function testGetNumberOfVisitors(): void
     {
         $this->prepareFakeCounter();
         $this->prepareConfig();
 
-        $this->statisticsController = $this->app->make(StatisticsController::class);
+        $statisticsController = $this->app->make(StatisticsController::class);
 
-        $response = $this->statisticsController->getNumberOfVisitors();
+        $response = $statisticsController->getNumberOfVisitors();
 
         $expectedData = json_encode([
             'test1' => 300,
@@ -32,9 +32,6 @@ class StatisticsControllerTest extends TestCase
             "{\"error\":false, \"message\":\"\", \"data\":$expectedData}", (string)$response);
     }
 
-    /**
-     * @param \Framework\Container $container
-     */
     private function prepareConfig(): void
     {
         $config = $this->createStub(Config::class);
@@ -45,9 +42,6 @@ class StatisticsControllerTest extends TestCase
         $this->container->singleton(Config::class, $config);
     }
 
-    /**
-     * @param \Framework\Container $container
-     */
     private function prepareFakeCounter(): void
     {
         $fakeCounter = $this->createStub(FakeCounter::class);
