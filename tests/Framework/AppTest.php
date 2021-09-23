@@ -20,7 +20,7 @@ class AppTest extends TestCase
         $router = $this->createMock(Router::class);
         $router->method('handleRequest')->willThrowException(new NotFound());
         
-        $app = new App($router, $this->app->make(Container::class));
+        $app = $this->app->make(App::class, ['router' => $router]);
         
         $response = $app->handleRequest();
 

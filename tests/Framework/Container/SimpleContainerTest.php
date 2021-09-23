@@ -8,7 +8,8 @@ use Tests\TestCase;
 class SimpleContainerTest extends TestCase
 {
 
-    private Container $container;
+    protected bool $withContainer = false;
+    protected \Framework\Container $container;
 
     public function testMakeWithoutConstructor(): void
     {
