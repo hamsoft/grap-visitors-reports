@@ -19,6 +19,7 @@
               processUncoveredFiles="true">
         <include>
             <directory suffix=".php">./Framework</directory>
+            <directory suffix=".php">./Statistics</directory>
         </include>
     </coverage>
     <php>
