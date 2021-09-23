@@ -21,4 +21,7 @@
             <directory suffix=".php">./Framework</directory>
         </include>
     </coverage>
+    <php>
+        <const name="APP_TESTING" value="true"/>
+    </php>
 </phpunit>
