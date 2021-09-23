@@ -31,10 +31,16 @@ class App
         return $response;
     }
 
-    public function make($abstract): mixed
+    public function make($abstract, $params = []): mixed
     {
-        return $this->container->make($abstract);
+        return $this->container->make($abstract, $params);
     }
+    
+    public function getContainer()
+    {
+        return $this->container;
+    }
+    
 
     public function handleRequest(): Response
     {

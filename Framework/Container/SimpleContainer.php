@@ -26,7 +26,7 @@ class SimpleContainer implements Container
     /**
      * @throws ReflectionException
      */
-    public function make($abstract): mixed
+    public function make($abstract, array $params = []): mixed
     {
         $instance = $this->singletons[$abstract] ?? null;
 
@@ -34,7 +34,7 @@ class SimpleContainer implements Container
             return $instance;
         }
 
-        $instance = $this->buildInstance($abstract);
+        $instance = $this->buildInstance($abstract, $params);
 
         if (array_key_exists($abstract, $this->singletons)) {
             $this->singletons[$abstract] = $instance;
@@ -45,10 +45,11 @@ class SimpleContainer implements Container
 
     /**
      * @param $abstract
+     * @param array $params
      * @return object
      * @throws ReflectionException
      */
-    private function buildInstance($abstract): object
+    private function buildInstance($abstract, array $params = []): object
     {
         $reflection = new ReflectionClass($abstract);
 
@@ -60,8 +61,7 @@ class SimpleContainer implements Container
         $dependencies = [];
         foreach ($constructor->getParameters() as $parameter) {
             if ($parameter->hasType()) {
-                $type = $parameter->getType();
-                $dependencies[] = $this->make($type->getName());
+                $dependencies[] = $params[$parameter->getName()] ?? $this->make($parameter->getType()->getName());
             }
         }
 
